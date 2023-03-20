@@ -1,6 +1,6 @@
 <template>
   <form>
-    <input type="text" :value="data.zonecode" placeholder="우편번호" />
+    <input type="text" :value="postcode" placeholder="우편번호" />
     <input type="button" @click="handleClick()" value="우편번호 찾기" />
     <input type="text" :value="address" placeholder="주소" />
     <input type="text" ref="detail" placeholder="상세주소" />
@@ -19,6 +19,7 @@ export default {
     return {
       data: {},
       extraAddr: '',
+      postcode: '',
     }
   },
   computed: {
@@ -72,7 +73,7 @@ function onComplete(data) {
   }
 
   // 우편번호와 주소 정보를 해당 필드에 넣는다.
-//  this.postcode = data.zonecode;
+  this.postcode = data.zonecode;
   // 커서를 상세주소 필드로 이동한다.
   this.$refs.detail.focus();
 }
